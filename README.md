@@ -35,22 +35,22 @@ gallows([
   {
     name: 'echo',
     validate: (attributes, body) => {
-      // Validate the attributes and body for the 'echo' command
+      return body !== undefined;
     },
     execute: (attributes, body) => {
-      // Execute the 'echo' command with the provided attributes and body
-      return `Echo: ${attributes.message}`;
+      // Execute the 'echo' command with the provided body
+      return body;
     },
     example: {
-      attributes: { message: 'Hello, world!' },
-      body: ''
+      attributes: {},
+      body: 'Hello, Gallows!'
     },
     description: 'Echoes the provided message'
   }
 ]).execute(
   'echo',
-  { message: 'Hello, Gallows!' },
-  ''
+  {},
+  'Hello, Gallows!'
 )
 ```
 
