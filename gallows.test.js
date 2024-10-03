@@ -15,11 +15,7 @@ describe('Gallows', () => {
           },
           description: 'Echoes the provided message'
         }
-      ]).execute(
-        'echo',
-        {},
-        'Hello, Gallows!'
-      );
+      ]).execute('echo', {}, 'Hello, Gallows!');
       expect(result).to.equal('Hello, Gallows!');
     });
 
@@ -41,15 +37,11 @@ describe('Gallows', () => {
           execute: (attributes, body) => `Echo: ${attributes.message}`,
           example: {
             attributes: { message: 'Hello, world!' },
-            body: ''
+            body: undefined
           },
           description: 'Echoes the provided message'
         }
-      ]).execute(
-        'echo',
-        { message: 'Hello, world!' },
-        ''
-      );
+      ]).execute('echo', { message: 'Hello, world!' });
       expect(result).to.equal('Echo: Hello, world!');
     });
   });
