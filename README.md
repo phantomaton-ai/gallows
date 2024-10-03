@@ -4,25 +4,25 @@ Gallows is a lightweight command execution framework. It allows you to define a 
 
 ## Usage
 
-To use Gallows, you define your commands, then execute them with directives:
+To use Gallows, you define your commands, then execute them:
 
 ```javascript
 gallows([
   // Define your commands here
-]).execute({
-  // Execute command directives here
-})
+]).execute(
+  // Execute commands here
+)
 ```
 
 Each command has the following properties:
 
 - `name`: The name of the command
 - `validate(attributes, body)`: A function that validates the command's attributes and body
-- `execute(attributes, body)`: A function that executes the command with the provided attributes and body
+- `execute(attributes, body)`: A function that executes the command with the provided attributes and body and returns the result
 - `example`: An object with `attributes` and `body` properties, demonstrating how to use the command
 - `description`: A description of what the command does
 
-Each directive has the following properties:
+When executing commands, you provide the following arguments:
 
 - `action`: The name of the command to execute
 - `attributes`: An object containing the attributes for the command
@@ -39,6 +39,7 @@ gallows([
     },
     execute: (attributes, body) => {
       // Execute the 'echo' command with the provided attributes and body
+      return `Echo: ${attributes.message}`;
     },
     example: {
       attributes: { message: 'Hello, world!' },
@@ -46,11 +47,11 @@ gallows([
     },
     description: 'Echoes the provided message'
   }
-]).execute({
-  action: 'echo',
-  attributes: { message: 'Hello, Gallows!' },
-  body: ''
-})
+]).execute(
+  'echo',
+  { message: 'Hello, Gallows!' },
+  ''
+)
 ```
 
-Feel free to add more commands and directives to your Gallows project!
+The `execute` function will return the result of the command. Feel free to add more commands to your Gallows project!
