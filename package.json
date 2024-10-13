@@ -1,7 +1,11 @@
 {
   "name": "gallows",
   "version": "1.0.0",
-  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phantomaton-ai/gallows.git"
+  },
+  "main": "gallows.js",
   "scripts": {
     "cov": "c8 -x *.test.* -r html --check-coverage --lines 100 npm test",
     "test": "mocha **/*.test.js"
@@ -15,5 +19,5 @@
     "c8": "^10.1.2",
     "chai": "^5.1.1",
     "mocha": "^10.7.3"
-  }
+  }  
 }
