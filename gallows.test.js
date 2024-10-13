@@ -4,7 +4,7 @@ import gallows from './gallows.js';
 describe('Gallows', () => {
   describe('execute', () => {
     it('performs commands named in directives', () => {
-      const result = gallows([
+      expect(gallows([
         {
           name: 'echo',
           validate: (attributes, body) => body !== undefined,
@@ -15,12 +15,11 @@ describe('Gallows', () => {
           },
           description: 'Echoes the provided message'
         }
-      ]).execute('echo', {}, 'Hello, Gallows!');
-      expect(result).to.equal('Hello, Gallows!');
+      ]).execute('echo', {}, 'Hello, Gallows!')).to.equal('Hello, Gallows!');
     });
 
     it('supports command overloading', () => {
-      const result = gallows([
+      expect(gallows([
         {
           name: 'echo',
           validate: (attributes, body) => body !== undefined,
@@ -41,8 +40,8 @@ describe('Gallows', () => {
           },
           description: 'Echoes the provided message'
         }
-      ]).execute('echo', { message: 'Hello, world!' });
-      expect(result).to.equal('Echo: Hello, world!');
+      ]).execute('echo', { message: 'Hello, world!' }))
+      .to.equal('Echo: Hello, world!');
     });
  
     it('ignores unknown commands', () => {
@@ -52,7 +51,7 @@ describe('Gallows', () => {
 
   describe('examples', () => {
     it('provides example directives', () => {
-      const result = gallows([
+      expect(gallows([
         {
           name: 'echo',
           validate: (attributes, body) => body !== undefined,
@@ -73,8 +72,7 @@ describe('Gallows', () => {
           },
           description: 'Echoes the provided message'
         }
-      ]).examples();
-      expect(result).to.deep.equal([
+      ]).examples()).to.deep.equal([
         { action: 'echo', attributes: {}, body: 'Hello, Gallows!' },
         { action: 'echo', attributes: { message: 'Hello, world!' }, body: undefined }
       ]);      
