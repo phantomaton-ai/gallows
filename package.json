@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "cov": "c8 npm test",
     "test": "mocha **/*.test.js"
   },
   "keywords": [],
@@ -11,6 +12,7 @@
   "description": "",
   "type": "module",
   "devDependencies": {
+    "c8": "^10.1.2",
     "chai": "^5.1.1",
     "mocha": "^10.7.3"
   }
