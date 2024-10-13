@@ -2,8 +2,8 @@ import { expect } from 'chai';
 import gallows from './gallows.js';
 
 describe('Gallows', () => {
-  describe('echo', () => {
-    it('echoes the provided body', () => {
+  describe('execute', () => {
+    it('performs commands named in directives', () => {
       const result = gallows([
         {
           name: 'echo',
@@ -43,6 +43,10 @@ describe('Gallows', () => {
         }
       ]).execute('echo', { message: 'Hello, world!' });
       expect(result).to.equal('Echo: Hello, world!');
+    });
+ 
+    it('ignores unknown commands', () => {
+      expect(gallows([]).execute('echo', {})).to.equal(undefined);
     });
   });
 
